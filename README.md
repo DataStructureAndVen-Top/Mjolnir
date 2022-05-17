@@ -25,3 +25,6 @@ https://docs.microsoft.com/zh-cn/sql/machine-learning/install/custom-runtime-pyt
 编写DAX([Data Analysis Expressions](https://docs.microsoft.com/zh-cn/dax/dax-function-reference))用,可以不用安装Microsoft SQL Server Analysis Services Tabular Mode
 
 - [x] 开始尝试研究下SPL([Structured Process Language](http://c.raqsoft.com.cn/article/1595816810031))
+
+
+Puny God 用途吐槽供应商以及提供相对应解决方案
