@@ -16,7 +16,9 @@ https://docs.microsoft.com/zh-cn/sql/machine-learning/install/custom-runtime-pyt
   下载但还没有安装
 
 - [x] [Azure Data Studio Donwload and Configuration](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15)
-    目前使用频率比SQL Server Management Studio 使用频率高，基本可以适应为Visual Studio Code的SQL专用版本
+    目前使用频率比SQL Server Management Studio 使用频率高
+    基本可以适应为Visual Studio Code的数据库专用版本
+    (SQL,R,Python)d
     个人习惯喜欢将运行执行快捷键修改为Alt+x  
 
     Ctrl+K Ctrl+S 中文语言包环境下查找'运行查询'  
