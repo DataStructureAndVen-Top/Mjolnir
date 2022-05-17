@@ -24,32 +24,13 @@ https://dev.mysql.com/doc/refman/5.7/en/year.html
 当然这些类型可以系统时间函数进行获得，当然在业务会存在类似与年月（YYYYMM）的数据类型。一天推荐使用char(8)来存放,前缀FY,CY用于区分自然年以及财务年
 
 
-```SQL
-FY202202
-FY202212
-CY202203 
-```
-<<<<<<< HEAD
 当然在数据仓库环境一下一般会存在时间维度表
 =======
-
-
-
-
-```SQL
-SELECT *
-FROM INFORMATION_SCHEMA.TABLES
-```
-
-```SQL
-SELECT *
-FROM INFORMATION_SCHEMA.TABLES
-```
-
 
 ```SQL
 SP_Help 'Dimension.[Date]'
 ```
+
 
 ```SQL
 SELECT *
