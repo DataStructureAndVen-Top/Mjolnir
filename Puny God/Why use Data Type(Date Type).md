@@ -7,7 +7,7 @@
  D 钝角  <br>
  供应商同学竟然没有选 D 钝角 而是选择C varchar(50),使得内容校验极其麻烦
  
- @import "Timestamp_Row3.csv"
+ @import "https://github.com/DataStructureAndVen-Top/Mjolnir/blob/main/Puny%20God/Timestamp_Row3.csv"
 
 
 ```SQL
