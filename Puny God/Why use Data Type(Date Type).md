@@ -5,19 +5,41 @@
  B datetime<br> 
  C varchar(50）<br>
  D 钝角  <br>
+ 供应商同学竟然没有选 D 钝角 而是选择C varchar(50),使得内容校验极其麻烦
+ 
+ @import "Timestamp_Row3.csv"
+
+
+```SQL
+-- Azure SQL Database 
+,CET_Table_Timestamp (timestamp,Length,RowNumber)
+as 
+(
+SELECT 
+timestamp, len(timestamp) as Length,
+ROW_NUMBER() OVER(PARTITION BY len(timestamp) ORDER BY [timestamp] DESC) AS RowNumber
+FROM CET_Table
+group by timestamp
+)
+SELECT *
+FROM CET_Table_Timestamp
+WHERE RowNumber <=3
+```
+
+
+
 
 首先大多RDBMS 都会提供DATETIME以及DATE类型<br>
-Oracle Data Type<br>
-https://docs.oracle.com/database/121/SQLRF/sql_elements001.htm#SQLRF0021<br>
+Oracle Date Type<br>
+https://docs.oracle.com/cd/B19306_01/olap.102/b14346/dml_datatypes005.htm<br>
 
-SQL Server Data Type<br>
+SQL Server Date Type<br>
 https://docs.microsoft.com/zh-cn/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql?view=sql-server-ver15<br>
 
 部分为了节约存储空间会提供类似<br>
-
-SQL Server Time Type<br>  
+SQL Server Time Type<br>
 https://docs.microsoft.com/zh-cn/sql/t-sql/data-types/time-transact-sql?view=sql-server-ver15<br>
-SQL Server smalldatetime Type<br>  
+SQL Server smalldatetime Type<br>
 https://docs.microsoft.com/zh-cn/sql/t-sql/data-types/smalldatetime-transact-sql?view=sql-server-ver15<br>
 MySQL Year Type<br>
 https://dev.mysql.com/doc/refman/5.7/en/year.html<br>
