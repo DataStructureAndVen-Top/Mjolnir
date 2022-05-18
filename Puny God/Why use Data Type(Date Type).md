@@ -5,7 +5,7 @@
  B datetime<br> 
  C varchar(50）<br>
  D 钝角  <br>
- 供应商同学竟然没有选 D 钝角 而是选择C varchar(50),使得内容校验极其麻烦
+ 供应商同学竟然没有选 D 钝角 而是选择C varchar(50)<br>
  
 | timestamp                     | Length | RowNumber |
 | ----------------------------- | ------ | --------- |
@@ -22,7 +22,7 @@
 | 2022-05-17T23:58:28.345+08:00 | 29     | 1         |
 | 2022-05-17T23:58:05.132+08:00 | 29     | 2         |
 | 2022-05-17T23:30:06.206+08:00 | 29     | 3         |
-
+结果自然是啥都能往里放，作为数据仓库数据类型不一致会导致报表制作环境相当烦躁，后续供应商也需要进行判断以及进行各种类型转换<br> 
 ```SQL
 -- Azure SQL Database 
 ,CET_Table_Timestamp (timestamp,Length,RowNumber)
@@ -38,11 +38,10 @@ SELECT *
 FROM CET_Table_Timestamp
 WHERE RowNumber <=3
 ```
+首先大多RDBMS 都会提供DATETIME以及DATE类型,基本都考虑了大部分时间存放一些维度（日期部分（YYYY-MM-DD）时间部分含毫秒部分（hh:mm:ss[.nnn]）,时区部分([+|-]hh:mm)，）<br>
+大部分To B系统大概率一般是使用以下部分就已经完全足够
 
 
-
-
-首先大多RDBMS 都会提供DATETIME以及DATE类型<br>
 Oracle Date Type<br>
 https://docs.oracle.com/cd/B19306_01/olap.102/b14346/dml_datatypes005.htm<br>
 
