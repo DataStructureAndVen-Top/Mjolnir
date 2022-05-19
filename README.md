@@ -1,4 +1,10 @@
-Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写，主要时间都放在了手撸 Markdown上，随缘跟新
+- Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写
+  比较偷懒没有使用Github Pages,直接就手撸 Markdown，大家将就看
+  Puny God 目录下主要用于吐槽供应商
+  <BR>
+  2022-05-16
+- 最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯<BR>
+  2022-05-19
 
 没有Cloud 环境，感觉自己下载安装软件的机会越来越少。
 
@@ -29,4 +35,4 @@ https://docs.microsoft.com/zh-cn/sql/machine-learning/install/custom-runtime-pyt
 - [x] 开始尝试研究下SPL([Structured Process Language](http://c.raqsoft.com.cn/article/1595816810031))
 
 
-Puny God 用途吐槽供应商以及提供相对应解决方案
+

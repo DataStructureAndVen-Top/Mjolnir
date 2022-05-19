@@ -92,22 +92,12 @@ FROM WideWorldImportersDW.Dimension.Date;
 |            |            |     |         |             |                       |                      |               |                     |                     |                    |             |                   |                 |
 <BR>
 
-可以看到微软两者实现方式也所不同,个人其实更加倾向于WideWorldImportersDW方式,即Schema部分有所意义(AdventureWorksDW2016_EXT Schema均为dbo.)<BR>
+可以看到微软两者实现方式也所不同,<BR>
+个人其实更加倾向于WideWorldImportersDW方式,<BR>
+ - Schema部分有所意义(AdventureWorksDW2016_EXT Schema均为dbo.)<BR>
+ - Calendar Month Label,Calendar Year Label,Fiscal Month Label,Fiscal Year Label 均使用文本方式存放,
+    带有前缀CY,FY避免之后的误解,当然对于某些用户更习惯于YYYYMM显示方式,需要在个位数月份前填充0<BR>
 
-<BR>
-
-```SQL
--- Microsoft SQL Database 
-USE AdventureWorksDW2016_EXT
-SELECT 
-    [TABLE_NAME],
-    [COLUMN_NAME],
-    [DATA_TYPE],
-    [CHARACTER_MAXIMUM_LENGTH]
-FROM INFORMATION_SCHEMA.Columns
-WHERE TABLE_NAME = 'DimDate'
-ORDER BY [DATA_TYPE]
-```
 
 
 ```SQL
