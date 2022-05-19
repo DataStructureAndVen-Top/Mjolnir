@@ -5,7 +5,8 @@
   2022-05-16
 - 最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯<BR>
   2022-05-19
-
+  <BR>
+  
 没有Cloud 环境，感觉自己下载安装软件的机会越来越少。
 
 - [x] [SQL Server 2019 Develop Enditon ](https://go.microsoft.com/fwlink/p/?linkid=866662)  
@@ -22,10 +23,10 @@ https://docs.microsoft.com/zh-cn/sql/machine-learning/install/custom-runtime-pyt
   下载但还没有安装
 
 - [x] [Azure Data Studio Donwload and Configuration](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15)
-    目前使用频率比SQL Server Management Studio 使用频率高
+    目前使用频率比SQL Server Management Studio 使用频率高<BR>
     基本可以适应为Visual Studio Code的数据库专用版本
-    (SQL,R,Python)d
-    个人习惯喜欢将运行执行快捷键修改为Alt+x  
+    (SQL,R,Python)<BR>
+    个人习惯喜欢将Run Query 以及 Run Current Query 执行快捷键修改为Alt+x  
 
     Ctrl+K Ctrl+S 中文语言包环境下查找'运行查询'  
 - [x] [Microsoft Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494)  

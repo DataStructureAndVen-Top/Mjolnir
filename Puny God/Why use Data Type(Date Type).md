@@ -66,7 +66,6 @@ FROM AdventureWorksDW2016_EXT.dbo.DimDate;
 | 20050108 | 2005-01-08           | 7               | Saturday             | Sábado               | Samedi              | 8                | 8               | 2                | January          | Enero            | Janvier         | 1                 | 1               | 2005         | 1                | 3             | 2005       | 2              |
 | 20050109 | 2005-01-09           | 1               | Sunday               | Domingo              | Dimanche            | 9                | 9               | 3                | January          | Enero            | Janvier         | 1                 | 1               | 2005         | 1                | 3             | 2005       | 2              |
 | 20050110 | 2005-01-10           | 2               | Monday               | Lunes                | Lundi               | 10               | 10              | 3                | January          | Enero            | Janvier         | 1                 | 1               | 2005         | 1                | 3             | 2005       | 2              |
-|          |                      |                 |                      |                      |                     |                  |                 |                  |                  |                  |                 |                   |                 |              |                  |               |            |                |
 
 <BR>
 
@@ -89,7 +88,6 @@ FROM WideWorldImportersDW.Dimension.Date;
 | 2013-01-08 | 8          | 8   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
 | 2013-01-09 | 9          | 9   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
 | 2013-01-10 | 10         | 10  | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
-|            |            |     |         |             |                       |                      |               |                     |                     |                    |             |                   |                 |
 <BR>
 
 可以看到微软两者实现方式也所不同,<BR>
@@ -97,8 +95,7 @@ FROM WideWorldImportersDW.Dimension.Date;
  - Schema部分有所意义(AdventureWorksDW2016_EXT Schema均为dbo.)<BR>
  - Calendar Month Label,Calendar Year Label,Fiscal Month Label,Fiscal Year Label 均使用文本方式存放,
     带有前缀CY,FY避免之后的误解,当然对于某些用户更习惯于YYYYMM显示方式,需要在个位数月份前填充0<BR>
-
-
+    为了节约空间Calendar Year,Calendar Month Number，Fiscal Month Number,Fiscal Year，ISO Week Number 使用tinyint(0到255范围，仅占1个字节)
 
 ```SQL
 -- Microsoft SQL Database 
@@ -130,9 +127,8 @@ ORDER BY [DATA_TYPE]
 | Date       | Day                   | nvarchar  | 10                       |
 | Date       | Month                 | nvarchar  | 10                       |
 | Date       | Short Month           | nvarchar  | 3                        |
-|            |                       |           |                          |
 
-
+<BR>
 
 >Oracle Date Type<br>
 >https://docs.oracle.com/cd/B19306_01/olap.102/b14346/dml_datatypes005.htm<br>
