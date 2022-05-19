@@ -108,10 +108,7 @@ FROM INFORMATION_SCHEMA.Columns
 WHERE TABLE_NAME = 'DimDate'
 ORDER BY [DATA_TYPE]
 ```
-<BR>
 
-
-<BR>
 
 ```SQL
 -- Microsoft SQL Database 
@@ -127,7 +124,23 @@ ORDER BY [DATA_TYPE]
 ```
 <BR>
 
-
+| TABLE_NAME | COLUMN_NAME           | DATA_TYPE | CHARACTER_MAXIMUM_LENGTH |
+| ---------- | --------------------- | --------- | ------------------------ |
+| Date       | Date                  | date      | NULL                     |
+| Date       | Day Number            | int       | NULL                     |
+| Date       | Calendar Month Number | int       | NULL                     |
+| Date       | Calendar Year         | int       | NULL                     |
+| Date       | Fiscal Month Number   | int       | NULL                     |
+| Date       | Fiscal Year           | int       | NULL                     |
+| Date       | ISO Week Number       | int       | NULL                     |
+| Date       | Fiscal Year Label     | nvarchar  | 10                       |
+| Date       | Fiscal Month Label    | nvarchar  | 20                       |
+| Date       | Calendar Year Label   | nvarchar  | 10                       |
+| Date       | Calendar Month Label  | nvarchar  | 20                       |
+| Date       | Day                   | nvarchar  | 10                       |
+| Date       | Month                 | nvarchar  | 10                       |
+| Date       | Short Month           | nvarchar  | 3                        |
+|            |                       |           |                          |
 
 
 
