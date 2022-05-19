@@ -1,13 +1,13 @@
+一个假想的问题
+假如一个列名称叫做create_date 请问这个列大概是什么类型<BR>
+A date <BR>
+B datetime<BR> 
+C varchar(50）<BR>
+D 钝角  <BR>
+供应商同学竟然没有选 D 钝角 而是选择C varchar(50)<BR>
+结果自然是啥都能往里放，作为数据仓库数据类型不一致会导致报表制作环境相当烦躁，后续供应商也需要进行判断以及进行各种类型转换
 
-问个问题
- 假如一个列名称叫做create_date 请问这个列大概是什么类型<BR>
- A date <BR>
- B datetime<BR> 
- C varchar(50）<BR>
- D 钝角  <BR>
- 供应商同学竟然没有选 D 钝角 而是选择C varchar(50)<BR>
- 结果自然是啥都能往里放，作为数据仓库数据类型不一致会导致报表制作环境相当烦躁，后续供应商也需要进行判断以及进行各种类型转换
- <BR>
+<BR>
  ```SQL
 -- Azure SQL Database 
 ,CET_Table_Timestamp (timestamp,Length,RowNumber)

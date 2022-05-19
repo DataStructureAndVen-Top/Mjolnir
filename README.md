@@ -1,12 +1,12 @@
 - Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写
   比较偷懒没有使用Github Pages,直接就手撸 Markdown，大家将就看
-  Puny God 目录下主要用于吐槽供应商
-  <BR>
-  2022-05-16
+  Puny God 目录下主要用于吐槽供应商<BR>
+  2022-05-16<BR>
+
 - 最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯<BR>
-  2022-05-19
-  <BR>
-  
+  租界到一个Azure(Mooncake) 环境,这下测试容易多
+  2022-05-19<BR>
+
 没有Cloud 环境，感觉自己下载安装软件的机会越来越少。
 
 - [x] [SQL Server 2019 Develop Enditon ](https://go.microsoft.com/fwlink/p/?linkid=866662)  
