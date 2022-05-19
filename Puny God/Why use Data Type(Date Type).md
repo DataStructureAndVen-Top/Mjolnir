@@ -74,6 +74,7 @@ SELECT TOP(10)*
 FROM WideWorldImportersDW.Dimension.Date;
 ```
 <BR>
+
 | Date       | Day Number | Day | Month   | Short Month | Calendar Month Number | Calendar Month Label | Calendar Year | Calendar Year Label | Fiscal Month Number | Fiscal Month Label | Fiscal Year | Fiscal Year Label | ISO Week Number |
 | ---------- | ---------- | --- | ------- | ----------- | --------------------- | -------------------- | ------------- | ------------------- | ------------------- | ------------------ | ----------- | ----------------- | --------------- |
 | 2013-01-01 | 1          | 1   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
