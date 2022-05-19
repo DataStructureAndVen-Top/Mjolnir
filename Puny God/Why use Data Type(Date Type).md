@@ -92,9 +92,10 @@ FROM WideWorldImportersDW.Dimension.Date;
 |            |            |     |         |             |                       |                      |               |                     |                     |                    |             |                   |                 |
 <BR>
 
-可以看到微软两者实现方式也所不同,个人其实更加倾向于WideWorldImportersDW方式,即Schema部分有所意义(AdventureWorksDW2016_EXT Schema均为dbo.)
+可以看到微软两者实现方式也所不同,个人其实更加倾向于WideWorldImportersDW方式,即Schema部分有所意义(AdventureWorksDW2016_EXT Schema均为dbo.)<BR>
 
 <BR>
+
 ```SQL
 -- Microsoft SQL Database 
 USE AdventureWorksDW2016_EXT
@@ -107,12 +108,11 @@ FROM INFORMATION_SCHEMA.Columns
 WHERE TABLE_NAME = 'DimDate'
 ORDER BY [DATA_TYPE]
 ```
-
-
 <BR>
 
 
 <BR>
+
 ```SQL
 -- Microsoft SQL Database 
 USE WideWorldImportersDW
