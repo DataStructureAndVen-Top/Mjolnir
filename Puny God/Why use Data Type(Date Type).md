@@ -44,10 +44,11 @@ WHERE RowNumber <=3
 <BR>
 
 首先大多RDBMS 都会提供DATETIME以及DATE类型,基本都考虑了大部分时间存放一些维度（日期部分（YYYY-MM-DD）时间部分含毫秒部分（hh:mm:ss[.nnn]）,时区部分([+|-]hh:mm)，）<BR>
-对于数据仓库系统(Data Warehouse)来说一般会存在时间维度表,去存放一些企业特定的财年(Fiscal Year) 对应于自然年(Civil Year),以及一些特殊的周(Week)定义<BR>
+对于数据仓库系统(Data Warehouse)来说一般会存在时间维度表(日期表),存放一些企业特定财年(Fiscal Year) 对应于自然年(Civil Year),以及一些星期(Week)定义<BR>
 一般可以去抄微软的作业<BR>
 
 ```SQL
+-- Microsoft SQL Database 
 SELECT TOP(10) *
 FROM AdventureWorksDW2016_EXT.dbo.DimDate;
 ```
@@ -70,6 +71,7 @@ FROM AdventureWorksDW2016_EXT.dbo.DimDate;
 <BR>
 
 ```SQL
+-- Microsoft SQL Database 
 SELECT TOP(10)* 
 FROM WideWorldImportersDW.Dimension.Date;
 ```
@@ -89,6 +91,43 @@ FROM WideWorldImportersDW.Dimension.Date;
 | 2013-01-10 | 10         | 10  | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
 |            |            |     |         |             |                       |                      |               |                     |                     |                    |             |                   |                 |
 <BR>
+
+可以看到微软两者实现方式也所不同,个人其实更加倾向于WideWorldImportersDW方式,即Schema部分有所意义(AdventureWorksDW2016_EXT Schema均为dbo.)
+
+<BR>
+```SQL
+-- Microsoft SQL Database 
+USE AdventureWorksDW2016_EXT
+SELECT 
+    [TABLE_NAME],
+    [COLUMN_NAME],
+    [DATA_TYPE],
+    [CHARACTER_MAXIMUM_LENGTH]
+FROM INFORMATION_SCHEMA.Columns
+WHERE TABLE_NAME = 'DimDate'
+ORDER BY [DATA_TYPE]
+```
+
+
+<BR>
+
+
+<BR>
+```SQL
+-- Microsoft SQL Database 
+USE WideWorldImportersDW
+SELECT
+    [TABLE_NAME],
+    [COLUMN_NAME],
+    [DATA_TYPE],
+    [CHARACTER_MAXIMUM_LENGTH]
+FROM INFORMATION_SCHEMA.Columns
+WHERE TABLE_NAME = 'Date'
+ORDER BY [DATA_TYPE]
+```
+<BR>
+
+
 
 
 
