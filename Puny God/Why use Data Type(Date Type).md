@@ -24,6 +24,7 @@ FROM CET_Table_Timestamp
 WHERE RowNumber <=3
 ```
  <BR>  
+
 | timestamp                     | Length | RowNumber |
 | ----------------------------- | ------ | --------- |
 | NULL                          | NULL   | 1         |
@@ -39,6 +40,7 @@ WHERE RowNumber <=3
 | 2022-05-17T23:58:28.345+08:00 | 29     | 1         |
 | 2022-05-17T23:58:05.132+08:00 | 29     | 2         |
 | 2022-05-17T23:30:06.206+08:00 | 29     | 3         |
+
 <BR>
 
 首先大多RDBMS 都会提供DATETIME以及DATE类型,基本都考虑了大部分时间存放一些维度（日期部分（YYYY-MM-DD）时间部分含毫秒部分（hh:mm:ss[.nnn]）,时区部分([+|-]hh:mm)，）<BR>
@@ -50,8 +52,7 @@ SELECT TOP(10) *
 FROM AdventureWorksDW2016_EXT.dbo.DimDate;
 ```
 <BR>
-SELECT TOP(10)* 
-FROM WideWorldImportersDW.Dimension.Date;
+
 | DateKey  | FullDateAlternateKey | DayNumberOfWeek | EnglishDayNameOfWeek | SpanishDayNameOfWeek | FrenchDayNameOfWeek | DayNumberOfMonth | DayNumberOfYear | WeekNumberOfYear | EnglishMonthName | SpanishMonthName | FrenchMonthName | MonthNumberOfYear | CalendarQuarter | CalendarYear | CalendarSemester | FiscalQuarter | FiscalYear | FiscalSemester |
 | -------- | -------------------- | --------------- | -------------------- | -------------------- | ------------------- | ---------------- | --------------- | ---------------- | ---------------- | ---------------- | --------------- | ----------------- | --------------- | ------------ | ---------------- | ------------- | ---------- | -------------- |
 | 20050101 | 2005-01-01           | 7               | Saturday             | Sábado               | Samedi              | 1                | 1               | 1                | January          | Enero            | Janvier         | 1                 | 1               | 2005         | 1                | 3             | 2005       | 2              |
@@ -66,8 +67,7 @@ FROM WideWorldImportersDW.Dimension.Date;
 | 20050110 | 2005-01-10           | 2               | Monday               | Lunes                | Lundi               | 10               | 10              | 3                | January          | Enero            | Janvier         | 1                 | 1               | 2005         | 1                | 3             | 2005       | 2              |
 |          |                      |                 |                      |                      |                     |                  |                 |                  |                  |                  |                 |                   |                 |              |                  |               |            |                |
 
-
-
+<BR>
 
 ```SQL
 SELECT TOP(10)* 
@@ -87,8 +87,7 @@ FROM WideWorldImportersDW.Dimension.Date;
 | 2013-01-09 | 9          | 9   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
 | 2013-01-10 | 10         | 10  | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
 |            |            |     |         |             |                       |                      |               |                     |                     |                    |             |                   |                 |
-
-
+<BR>
 
 
 
