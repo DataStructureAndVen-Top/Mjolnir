@@ -4,11 +4,12 @@
   2022-05-16<BR>
 
 - 最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯<BR>
-  租界到一个Azure(Mooncake) 环境,这下测试容易多<BR>
+  租界到一个Azure(Mooncake) 环境,这下测试容易多,北3创建Azure Managed Instance 竟然需要6个小时<BR>
   2022-05-19<BR>
 
-没有Cloud 环境，感觉自己下载安装软件的机会越来越少。
-
+没有Cloud 环境，感觉自己下载安装软件的机会越来越少。<BR>
+2022-05-16<BR>
+以下写都写了，万一以后需要安装IaaS环境<BR>
 - [x] [SQL Server 2019 Develop Enditon ](https://go.microsoft.com/fwlink/p/?linkid=866662)  
     Include  machine Learning and Language 
     Extensions   
@@ -26,7 +27,9 @@ https://docs.microsoft.com/zh-cn/sql/machine-learning/install/custom-runtime-pyt
     目前使用频率比SQL Server Management Studio 使用频率高<BR>
     基本可以适应为Visual Studio Code的数据库专用版本
     (SQL,R,Python)<BR>
-    个人习惯喜欢将Run Query 以及 Run Current Query 执行快捷键修改为Alt+x  
+    个人习惯喜欢将Run Query 以及 Run Current Query 执行快捷键修改为Alt+x
+    [Keyboard shortcuts in Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/keyboard-shortcuts?view=sql-server-ver15#edit-existing-keyboard-shortcuts)
+
 
     Ctrl+K Ctrl+S 中文语言包环境下查找'运行查询'  
 - [x] [Microsoft Power BI Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=58494)  
