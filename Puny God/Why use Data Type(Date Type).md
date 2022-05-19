@@ -45,32 +45,50 @@ WHERE RowNumber <=3
 
 对于数据仓库系统(Data Warehouse)来说一般会存在时间维度表
 去存放一些企业特定的财年(Fiscal Year) 对应于自然年(Civil Year),以及一些特殊的周(Week)定义
-
-
-
-当然在数据仓库环境一下一般会存在时间维度表
+一般可以去抄微软的作业
 =======
 
 ```SQL
-SP_Help 'Dimension.[Date]'
-```
+SELECT TOP(10) *
+FROM AdventureWorksDW2016_EXT.dbo.DimDate;
 
-
-```SQL
-SELECT *
-FROM Dimension.[Date]
+SELECT TOP(10)* 
+FROM WideWorldImportersDW.Dimension.Date;
 ```
+| TABLE_CATALOG                | TABLE_SCHEMA | TABLE_NAME   | COLUMN_NAME   | ORDINAL_POSITION | COLUMN_DEFAULT | IS_NULLABLE | DATA_TYPE | CHARACTER_MAXIMUM_LENGTH | CHARACTER_OCTET_LENGTH | NUMERIC_PRECISION | NUMERIC_PRECISION_RADIX | NUMERIC_SCALE | DATETIME_PRECISION | CHARACTER_SET_CATALOG | CHARACTER_SET_SCHEMA | CHARACTER_SET_NAME | COLLATION_CATALOG | COLLATION_SCHEMA | COLLATION_NAME | DOMAIN_CATALOG | DOMAIN_SCHEMA | DOMAIN_NAME |
+| ---------------------------- | ------------ | ------------ | ------------- | ---------------- | -------------- | ----------- | --------- | ------------------------ | ---------------------- | ----------------- | ----------------------- | ------------- | ------------------ | --------------------- | -------------------- | ------------------ | ----------------- | ---------------- | -------------- | -------------- | ------------- | ----------- |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | s_log_syslog | timestamp     | 4                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | s_test       | created_date  | 4                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | s_test       | modified_date | 6                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | s_test       | timestamp     | 8                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | ws_message   | created_date  | 4                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | ws_message   | modified_date | 6                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | ws_message   | timestamp     | 8                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | ws_message   | read_time     | 13               | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+| sqldb-chinamde-qa-chinaeast2 | dbo          | ws_site      | create_time   | 8                | NULL           | YES         | datetime2 | NULL                     | NULL                   | NULL              | NULL                    | NULL          | 7                  | NULL                  | NULL                 | NULL               | NULL              | NULL             | NULL           | NULL           | NULL          | NULL        |
+|                              |              |              |               |                  |                |             |           |                          |                        |                   |                         |               |                    |                       |                      |                    |                   |                  |                |                |               |             |
+| Date       | Day Number | Day | Month   | Short Month | Calendar Month Number | Calendar Month Label | Calendar Year | Calendar Year Label | Fiscal Month Number | Fiscal Month Label | Fiscal Year | Fiscal Year Label | ISO Week Number |
+| ---------- | ---------- | --- | ------- | ----------- | --------------------- | -------------------- | ------------- | ------------------- | ------------------- | ------------------ | ----------- | ----------------- | --------------- |
+| 2013-01-01 | 1          | 1   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
+| 2013-01-02 | 2          | 2   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
+| 2013-01-03 | 3          | 3   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
+| 2013-01-04 | 4          | 4   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
+| 2013-01-05 | 5          | 5   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
+| 2013-01-06 | 6          | 6   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 1               |
+| 2013-01-07 | 7          | 7   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
+| 2013-01-08 | 8          | 8   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
+| 2013-01-09 | 9          | 9   | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
+| 2013-01-10 | 10         | 10  | January | Jan         | 1                     | CY2013-Jan           | 2013          | CY2013              | 3                   | FY2013-Jan         | 2013        | FY2013            | 2               |
+|            |            |     |         |             |                       |                      |               |                     |                     |                    |             |                   |                 |
+
 
 
 
 
 >Oracle Date Type<br>
 >https://docs.oracle.com/cd/B19306_01/olap.102/b14346/dml_datatypes005.htm<br>
-
 >SQL Server Date Type<br>
 >https://docs.microsoft.com/zh-cn/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql?view=sql-server-ver15<br>
-
->部分为了节约存储空间会提供类似<br>
 >SQL Server Time Type<br>
 >https://docs.microsoft.com/zh-cn/sql/t-sql/data-types/time-transact-sql?view=sql-server-ver15<br>
 >SQL Server smalldatetime Type<br>
