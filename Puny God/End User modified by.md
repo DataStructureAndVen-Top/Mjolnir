@@ -2,36 +2,25 @@
 
 <BR>
 
- ```SQL
-With CET_Table(
-COLUMN_NAME, 
-DATA_TYPE, 
-CHARACTER_MAXIMUM_LENGTH,
-ROW_COUNT)
+```SQL
+-- Azure SQL Database 
+With CET_Table(COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH,ROW_COUNT)
 as
 (
-SELECT 
-
-COLUMN_NAME, 
-DATA_TYPE,
-CHARACTER_MAXIMUM_LENGTH,
+SELECT COLUMN_NAME, DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,
 ROW_NUMBER() OVER(PARTITION BY COLUMN_NAME 
             ORDER BY [COLUMN_NAME] DESC)
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE COLUMN_NAME in ('created_date','created_by','create_by','create_date', 'createon','CreatedBy') 
-OR COLUMN_NAME in('modified_date','ModifiedOn', 'ModifiedBy')
+OR COLUMN_NAME in('modified_date','ModifiedOn', 'Modified_By')
 )
 SELECT 
-COLUMN_NAME, 
-DATA_TYPE, 
-CHARACTER_MAXIMUM_LENGTH
+COLUMN_NAME, DATA_TYPE,CHARACTER_MAXIMUM_LENGTH
 FROM CET_Table
 WHERE ROW_COUNT <= 3
 ORDER BY COLUMN_NAME ASC,ROW_COUNT ASC
--- 'modified_by','remark',
 ```
 <BR>  
-
 
 | COLUMN_NAME   | DATA_TYPE | CHARACTER_MAXIMUM_LENGTH |
 | ------------- | --------- | ------------------------ |
@@ -39,23 +28,43 @@ ORDER BY COLUMN_NAME ASC,ROW_COUNT ASC
 | create_by     | varchar   | 255                      |
 | create_by     | nvarchar  | 255                      |
 | create_date   | varchar   | 50                       |
-| create_date   | datetime  | NULL                     |
+| create_date   | varchar   | 100                      |
 | create_date   | varchar   | 50                       |
+| created_by    | nvarchar  | 64                       |
 | created_by    | varchar   | 50                       |
 | created_by    | varchar   | 50                       |
-| created_by    | varchar   | 50                       |
-| created_date  | varchar   | 30                       |
 | created_date  | varchar   | 100                      |
+| created_date  | varchar   | 30                       |
 | created_date  | varchar   | 20                       |
 | createdBy     | varchar   | 50                       |
-| createdBy     | varchar   | 100                      |
-| createdBy     | varchar   | 100                      |
-| modified_date | varchar   | 20                       |
+| createdBy     | varchar   | 50                       |
+| createdBy     | varchar   | 50                       |
+| modified_by   | varchar   | 50                       |
+| modified_by   | varchar   | 50                       |
+| modified_by   | varchar   | 50                       |
 | modified_date | varchar   | 20                       |
 | modified_date | varchar   | 30                       |
-| modifiedBy    | varchar   | 100                      |
-| modifiedBy    | varchar   | 100                      |
-| modifiedBy    | varchar   | 50                       |
+| modified_date | nvarchar  | 64                       |
 | ModifiedOn    | varchar   | -1                       |
 | ModifiedOn    | varchar   | -1                       |
 | ModifiedOn    | varchar   | -1                       |
+
+
+<BR> 
+
+内容基本定义为Created_By(何人创建),Create_Date(创建时间)<BR> 
+Modified_By(何人修改),Modified_Date(何时修改)<BR>
+数据一如既往的都使用varchar类型,这点就不再吐槽了,可以看到CHARACTER_MAXIMUM_LENGTH 还有值为-1，这并不是什么BUG,而是表示varchar(MAX)类型打(虽然我也不清楚为什么时间要放那么长)<BR>
+
+个人认为完全不用将用户数据/业务数据与跟踪数据存放在同一张表中,当然再实现前有几点需要进行考虑<BR>
+ - 业务表只存在Insert操作，业务存储查看历史更改状况,高频查询的为最终值(last Value)<BR>
+ - 追踪信息查询高频为 Modified_By(何人修改),Modified_Date(何时修改)<BR>
+
+ 几种可以实现方式
+
+ - 业务表需要修改时间(Modified_Date)列用于区分先后修改顺序,以及查询最新更新状况<BR>
+ - 或使用[temporal table](https://docs.microsoft.com/en-us/sql/relational-databases/tables/getting-started-with-system-versioned-temporal-tables?view=sql-server-ver15) 实现版本控制<BR>
+ - Created_By(何人创建),Create_Date(创建时间) 使用频率较低,可以考虑另存一张表使用外键关联
+ - 对业务数据表使用Tigger
+ - 
+ - 
