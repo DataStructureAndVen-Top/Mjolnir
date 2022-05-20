@@ -8,6 +8,11 @@
 - 白嫖到一个Azure(Mooncake) 环境<BR>
   [Azure Managed Instance](https://docs.azure.cn/zh-cn/azure-sql/managed-instance/) <BR>
   2022-05-20<BR>
+- 还是用自己的Surface Book服务器<BR>
+  Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作<BR>
+  Azure SQL DW 没有资源 
+  2022-05-21<BR>
+
 
 没有Cloud 环境，感觉自己下载安装软件的机会越来越少。<BR>
 2022-05-16<BR>
