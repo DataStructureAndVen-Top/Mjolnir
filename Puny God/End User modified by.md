@@ -64,7 +64,4 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
 
  - 业务表需要修改时间(Modified_Date)列用于区分先后修改顺序,以及查询最新更新状况<BR>
  - 或使用[temporal table](https://docs.microsoft.com/en-us/sql/relational-databases/tables/getting-started-with-system-versioned-temporal-tables?view=sql-server-ver15) 实现版本控制<BR>
- - Created_By(何人创建),Create_Date(创建时间) 使用频率较低,可以考虑另存一张表使用外键关联
- - 对业务数据表使用Tigger
- - 
- - 
+ - Created_By(何人创建),Create_Date(创建时间) 仔细考虑其实并不需要单个列进行存放，而可以通过最早时间进行查
