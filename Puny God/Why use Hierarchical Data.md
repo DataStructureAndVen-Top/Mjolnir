@@ -4,6 +4,6 @@
  -  [Relational Database Management System - Table](https://docs.microsoft.com/zh-cn/sql/relational-databases/hierarchical-data-sql-server?view=sql-server-ver15)
  -  Semi-Structured
     -  [XML](https://docs.microsoft.com/en-us/sql/relational-databases/xml/xml-data-sql-server?view=sql-server-ver15)
-    -  [JSOn](https://docs.microsoft.com/zh-cn/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver15)
+    -  [JSON](https://docs.microsoft.com/zh-cn/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver15)
  -  [Hierarchyid](https://docs.microsoft.com/en-us/sql/relational-databases/hierarchical-data-sql-server?view=sql-server-ver15)
  -  [SQL Graph](https://docs.microsoft.com/zh-cn/sql/relational-databases/graphs/sql-graph-architecture?view=sql-server-ver15)
