@@ -60,8 +60,17 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
  - 业务表只存在Insert操作，业务存储查看历史更改状况,高频查询的为最终值(last Value)<BR>
  - 追踪信息查询高频为 Modified_By(何人修改),Modified_Date(何时修改)<BR>
 
- 几种可以实现方式
+ 一些思考以及实现方式<BR>
 
- - 业务表需要修改时间(Modified_Date)列用于区分先后修改顺序,以及查询最新更新状况<BR>
+ - 业务表需要修改时间(Modified_Date)列用于区分先后修改顺序,以及查询最新更新版本<BR>
  - 或使用[temporal table](https://docs.microsoft.com/en-us/sql/relational-databases/tables/getting-started-with-system-versioned-temporal-tables?view=sql-server-ver15) 实现版本控制<BR>
- - Created_By(何人创建),Create_Date(创建时间) 仔细考虑其实并不需要单个列进行存放，而可以通过最早时间进行查
+ - Created_By(何人创建),Create_Date(创建时间) 仔细考虑其实并不需要单个列进行存放，而可以通过最早时间进行查询获得
+
+Temporal Table 实现方式
+ -  可以照常使用Update,Delete方式进行更新
+ -  数据表默认存放为最新版本(Last Version)值
+
+表结构实现方式
+ -  只能使用Insert方式提交修改值,如需要删除值需要特别标记
+ -  需要使用条件获得最新版本(Last Version)值
+ -  
