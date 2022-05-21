@@ -1,3 +1,4 @@
+### Question
 一个假想的问题
 假如一个列名称叫做create_date 请问这个列大概是什么类型<BR>
 A date <BR>
@@ -8,6 +9,7 @@ D 钝角  <BR>
 结果自然是啥都能往里放，作为数据仓库数据类型不一致会导致报表制作环境相当烦躁，后续供应商也需要进行判断以及进行各种类型转换
 <BR>
 
+### In Database
 ```SQL
 -- Azure SQL Database 
 ,CET_Table_Timestamp (timestamp,Length,RowNumber)
@@ -42,6 +44,8 @@ WHERE RowNumber <=3
 | 2022-05-17T23:30:06.206+08:00 | 29     | 3         |
 
 <BR>
+
+### Date Type(Datetime&Date)
 
 首先大多RDBMS 都会提供DATETIME以及DATE类型,基本都考虑了大部分时间存放一些维度（日期部分（YYYY-MM-DD）时间部分含毫秒部分（hh:mm:ss[.nnn]）,时区部分([+|-]hh:mm)，）<BR>
 对于数据仓库系统(Data Warehouse)来说一般会存在时间维度表(日期表),存放一些企业特定财年(Fiscal Year) 对应于自然年(Civil Year),以及一些星期(Week)定义<BR>
@@ -130,6 +134,7 @@ ORDER BY [DATA_TYPE]
 
 <BR>
 
+### Reference
 >Oracle Date Type<br>
 >https://docs.oracle.com/cd/B19306_01/olap.102/b14346/dml_datatypes005.htm<br>
 >SQL Server Date Type<br>
