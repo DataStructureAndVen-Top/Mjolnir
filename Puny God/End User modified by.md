@@ -68,7 +68,8 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
 
 Temporal Table 实现方式
  -  可以照常使用Update,Delete方式进行更新
- -  数据表默认存放为最新版本(Last Version)值
+ -  数据表默认存放为最新版本(Last Version)
+ 
 
 表结构实现方式
  -  只能使用Insert方式提交修改值,如需要删除值需要特别标记
