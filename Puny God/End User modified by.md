@@ -69,10 +69,167 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
 Temporal Table 实现方式
  -  可以照常使用Update,Delete方式进行更新
  -  数据表默认存放为最新版本(Last Version)
- 
+ -  ValidFrom与ValidTo 为系统管理.时区为UTC时区,用户友好方式需要进行一层转换
+
+<BR> 
+
+```SQL
+-- Microsoft SQL Database 
+CREATE TABLE dbo.T_Employee
+(
+  [EmployeeID] int NOT NULL PRIMARY KEY CLUSTERED
+  , [Name] nvarchar(100) NOT NULL
+  , [Position] varchar(100) NOT NULL
+  , [ValidFrom] datetime2 GENERATED ALWAYS AS ROW START
+  , [ValidTo] datetime2 GENERATED ALWAYS AS ROW END
+  , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+ )
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.EmployeeHistory));
+
+--制造一些数据
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (1,'Isabella','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (2,'Ethan','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (3,'Amy','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (4,'Anthony','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (5,'Taj','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (6,'Hudson','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (7,'Jack','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (8,'Piper','C1');
+
+WAITFOR DELAY '00:00:02:00';
+
+UPDATE [dbo].[T_Employee]
+SET [Position] = 'B1'
+WHERE EmployeeID = '1'
+
+WAITFOR DELAY '00:00:02:00';
+
+UPDATE [dbo].[T_Employee]
+SET [Position] = 'A1'
+WHERE EmployeeID = '1'
+
+WAITFOR DELAY '00:00:02:00';
+
+DELETE [dbo].[T_Employee]
+WHERE EmployeeID = '2'
+
+```
+<BR>  
+
+
+查询EmployeeID编号为1的历史记录<BR> 
+
+```SQL
+-- Microsoft SQL Database 
+SELECT * FROM dbo.[T_Employee]
+FOR SYSTEM_TIME ALL
+WHERE EmployeeID = '1'
+ORDER BY ValidFrom DESC
+```
+<BR>  
+
+| EmployeeID | Name     | Position | ValidFrom                   | ValidTo                     |
+| ---------- | -------- | -------- | --------------------------- | --------------------------- |
+| 1          | Isabella | A1       | 2022-05-21 10:58:16.5386151 | 9999-12-31 23:59:59.9999999 |
+| 1          | Isabella | B1       | 2022-05-21 10:58:14.5309111 | 2022-05-21 10:58:16.5386151 |
+| 1          | Isabella | C1       | 2022-05-21 10:58:12.5007888 | 2022-05-21 10:58:14.5309111 |
+
+<BR> 
+不使用WHERE子句整表查询结果相当数据仓库中的渐变维度表(Slowly Changing Dimension)
+注意EmployeeID为2记录行中,虽然被删除但仍能查询获得
+
+```SQL
+-- Microsoft SQL Database 
+SELECT * FROM dbo.[T_Employee]
+FOR SYSTEM_TIME ALL
+ORDER BY EmployeeID ASC,ValidFrom DESC
+```
+<BR>
+
+| EmployeeID | Name     | Position | ValidFrom                   | ValidTo                     |
+| ---------- | -------- | -------- | --------------------------- | --------------------------- |
+| 1          | Isabella | A1       | 2022-05-21 10:58:16.5386151 | 9999-12-31 23:59:59.9999999 |
+| 1          | Isabella | B1       | 2022-05-21 10:58:14.5309111 | 2022-05-21 10:58:16.5386151 |
+| 1          | Isabella | C1       | 2022-05-21 10:58:12.5007888 | 2022-05-21 10:58:14.5309111 |
+| 2          | Ethan    | C1       | 2022-05-21 10:58:12.5116103 | 2022-05-21 10:58:18.5452575 |
+| 3          | Amy      | C1       | 2022-05-21 10:58:12.5116103 | 9999-12-31 23:59:59.9999999 |
+| 4          | Anthony  | C1       | 2022-05-21 10:58:12.5116103 | 9999-12-31 23:59:59.9999999 |
+| 5          | Taj      | C1       | 2022-05-21 10:58:12.5116103 | 9999-12-31 23:59:59.9999999 |
+| 6          | Hudson   | C1       | 2022-05-21 10:58:12.5116103 | 9999-12-31 23:59:59.9999999 |
+| 7          | Jack     | C1       | 2022-05-21 10:58:12.5116103 | 9999-12-31 23:59:59.9999999 |
+| 8          | Piper    | C1       | 2022-05-21 10:58:12.5116103 | 9999-12-31 23:59:59.9999999 |
+
+<BR> 
+
+```SQL
+-- Microsoft SQL Database 
+```
+<BR>  
+
+不能直接使用DROP TABLE进行删除,需要关闭版本控制.随后删除所对应的两张表
+
+<BR> 
+
+```SQL
+-- Microsoft SQL Database 
+ALTER TABLE [dbo].[T_Employee] SET ( SYSTEM_VERSIONING = OFF  )
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[T_Employee]') AND type in (N'U'))
+DROP TABLE [dbo].[T_Employee]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EmployeeHistory]') AND type in (N'U'))
+DROP TABLE [dbo].[EmployeeHistory]
+GO
+```
+
+<BR>  
+
+由于默认使用UTC时区,为了大家的便利性创建视图, 并降低一定的时间精度(毫秒对于一般业务意义不大)
+
+```SQL
+-- Microsoft SQL Database 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V_Employee_ChinaTimeZone]') AND type in (N'V'))
+DROP VIEW V_Employee_ChinaTimeZone
+--创建中国时区视图
+GO
+CREATE VIEW V_Employee_ChinaTimeZone
+AS
+SELECT [EmployeeID]
+      ,[Name]
+      ,[Position]
+      ,CAST([ValidFrom] AT TIME ZONE 'UTC' AT TIME ZONE 'China Standard Time' as smalldatetime) AS LastUpdate
+  FROM [Mjolnir].[dbo].[T_Employee]
+GO
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Employee]') AND type in (N'SN'))
+DROP SYNONYM [Employee]
+--创建对应同义词
+CREATE SYNONYM Employee  
+FOR V_Employee_ChinaTimeZone;  
+--这样取得的是版本最新值(Last Version)
+SELECT * FROM Employee
+```
+<BR>
+
+| EmployeeID | Name     | Position | LastUpdate          |
+| ---------- | -------- | -------- | ------------------- |
+| 1          | Isabella | A1       | 2022-05-21 19:32:00 |
+| 3          | Amy      | C1       | 2022-05-21 19:32:00 |
+| 4          | Anthony  | C1       | 2022-05-21 19:32:00 |
+| 5          | Taj      | C1       | 2022-05-21 19:32:00 |
+| 6          | Hudson   | C1       | 2022-05-21 19:32:00 |
+| 7          | Jack     | C1       | 2022-05-21 19:32:00 |
+| 8          | Piper    | C1       | 2022-05-21 19:32:00 |
+
+<BR>可以发现其创建日期(就是第一次更新日期), 完全没有必要去占用一列去存储
+
+
+
 
 表结构实现方式
  -  只能使用Insert方式提交修改值,如需要删除值需要特别标记
  -  需要自定义的时间列用于时间戳
  -  需要使用条件获得最新版本(Last Version)值
- -  
+
+
