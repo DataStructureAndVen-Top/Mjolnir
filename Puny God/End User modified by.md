@@ -167,7 +167,7 @@ ORDER BY EmployeeID ASC,ValidFrom DESC
 <BR>  
 
 不能直接使用DROP TABLE进行删除,需要关闭版本控制.随后删除所对应的两张表
-
+也不能使用TRUNCATE TABLE
 <BR> 
 
 ```SQL
@@ -224,4 +224,6 @@ SELECT * FROM Employee
 
 <BR>可以发现其创建日期(就是第一次更新日期), 完全没有必要去占用一列去存储
 
-考虑是否做用Store Procedure进行封装一层
+
+鉴于前端拼接SQL语句的不熟练性,干脆包装成存储过程(Store Procedure)一层
+
