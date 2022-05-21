@@ -66,7 +66,7 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
  - 或使用[temporal table](https://docs.microsoft.com/en-us/sql/relational-databases/tables/getting-started-with-system-versioned-temporal-tables?view=sql-server-ver15) 实现版本控制<BR>
  - Created_By(何人创建),Create_Date(创建时间) 仔细考虑其实并不需要单个列进行存放，而可以通过最早时间进行查询获得
 
-Temporal Table 实现方式
+可以使用Temporal Table 方式进行的实现(不是很想写用张基础表Join事项方式)
  -  可以照常使用Update,Delete方式进行更新
  -  数据表默认存放为最新版本(Last Version)
  -  ValidFrom与ValidTo 为系统管理.时区为UTC时区,用户友好方式需要进行一层转换
@@ -224,12 +224,4 @@ SELECT * FROM Employee
 
 <BR>可以发现其创建日期(就是第一次更新日期), 完全没有必要去占用一列去存储
 
-
-
-
-表结构实现方式
- -  只能使用Insert方式提交修改值,如需要删除值需要特别标记
- -  需要自定义的时间列用于时间戳
- -  需要使用条件获得最新版本(Last Version)值
-
-
+考虑是否做用Store Procedure进行封装一层
