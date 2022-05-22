@@ -3,12 +3,12 @@
 
 # Log
 正经人不是很想写日志,或许是吃饱了
-| Date | Memo |
+| YYYYMMDD | NVARCHAR(MAX) |
 | ------------- | ---- |
-| 2022-05-21    |还是用自己的Surface Book当作服务器用Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作 |
-| 2022-05-20    |Azure SQL DW 没有资源，白嫖到一个Azure(Mooncake) 环境<BR> |
-| 2022-05-19    |最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯|
-|2022-05-16     |Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写.Puny God 目录下主要用于吐槽供应商<BR>
+| 20220521    |还是用自己的Surface Book当作服务器用Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作 |
+| 20220520    |Azure SQL DW 没有资源，白嫖到一个Azure(Mooncake) 环境<BR> |
+| 20220519    |最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯|
+|20220516     |Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写.Puny God 目录下主要用于吐槽供应商<BR>
 
 # Preparations and Necessary Software
 没有Cloud 环境，感觉自己下载安装软件的机会越来越少。<BR>
