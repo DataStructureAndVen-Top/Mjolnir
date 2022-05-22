@@ -274,6 +274,7 @@ VALUES(15,'Ling','C1'),(14,'Ling','C1') --可以直接传入多行
 SELECT * FROM Employee_Recode
 ```
 <BR>
+
 | EmployeeID | Name | Position |
 | ---------- | ---- | -------- |
 | 15         | Ling | C1       |

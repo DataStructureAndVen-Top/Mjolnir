@@ -3,17 +3,17 @@
   环境配置可以参考[这里](https://github.com/DataStructureAndVen-Top/Mjolnir#preparations-and-necessary-software), 都是用本地环境搭建  
 ## SQL Part - Microsoft SQL Server 
   ### 数据类型基础篇
-  日期类型(Date,Datetime)的重要性,没有设计涉及转换函数,只是说这么用[Why use Data Type(Date Type)](Puny%20God/Why%20use%20Data%20Type(Date%20Type).md)
-  数值类型,雪花函数,浮点小数以及货币类型.
+  [日期类型(Date,Datetime)的重要性,没有设计涉及转换函数,只是说这么用](Puny%20God/Why%20use%20Data%20Type(Date%20Type).md)<BR>
+  数值类型,雪花函数,浮点小数以及货币类型.<BR> Working
   ### 多版本实现
-  时态表(Temporal Table)<BR>
-  参数化(Parameterization),使用存储过程(Store Produce)进行分装<BR>
-  表值构造(Table Value Constructor)<BR>
-  MERGE 构造方式,发现和Oracle还挺不同的<BR>
-  ### 一些半结构类型
+  [时态表(Temporal Table)](https://github.com/DataStructureAndVen-Top/Mjolnir/blob/main/Puny%20God/End%20User%20modified%20by.md#using-temporal-table)<BR>
+  [参数化(Parameterization),使用存储过程(Store Produce)进行分装](https://github.com/DataStructureAndVen-Top/Mjolnir/blob/main/Puny%20God/End%20User%20modified%20by.md#store-produce-delete-partparameterization)<BR>
+  [表值构造(Table Value Constructor)](https://github.com/DataStructureAndVen-Top/Mjolnir/blob/main/Puny%20God/End%20User%20modified%20by.md#store-produce-table-value-constructor-part)<BR>
+  [MERGE 构造方式,发现和Oracle还挺不同的](https://github.com/DataStructureAndVen-Top/Mjolnir/blob/main/Puny%20God/End%20User%20modified%20by.md#store-produce-merge-part)<BR>
+  ### 半结构化类型
   Working
 
-## KQL Azure Data Explore 
+## KQL Part - Azure Data Explore 
 
 # Log
 正经人不是很想写日志,或许是吃饱了
