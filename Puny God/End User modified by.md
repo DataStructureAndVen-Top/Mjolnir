@@ -74,6 +74,7 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
 
 <BR> 
 
+#### CREATE Temporal Table
 ```SQL
 -- Microsoft SQL Database 
 CREATE TABLE dbo.T_Employee
@@ -98,11 +99,6 @@ VALUES (1,'Isabella','C1'),
 (7,'Jack','C1'),
 (8,'Piper','C1');
 
-
-INSERT INTO Production.UnitMeasure  
-VALUES (N'FT2', N'Square Feet ', '20080923'), (N'Y', N'Yards', '20080923'),
-       (N'Y3', N'Cubic Yards', '20080923');  
-
 WAITFOR DELAY '00:00:02:00';
 
 UPDATE [dbo].[T_Employee]
@@ -123,11 +119,9 @@ WHERE EmployeeID = '2'
 ```
 <BR>  
 
-
-查询EmployeeID编号为1的历史记录<BR> 
-
+#### Query Temporal Table
 ```SQL
--- Microsoft SQL Database 
+-- Microsoft SQL Database 查询EmployeeID编号为1的历史记录 
 SELECT * FROM dbo.[T_Employee]
 FOR SYSTEM_TIME ALL
 WHERE EmployeeID = '1'
@@ -173,6 +167,7 @@ ORDER BY EmployeeID ASC,ValidFrom DESC
 ```
 <BR>  
 
+#### DROP Temporal Table
 不能直接使用DROP TABLE进行删除,需要关闭版本控制.随后删除所对应的两张表
 也不能使用TRUNCATE TABLE
 <BR> 
@@ -276,6 +271,7 @@ CREATE TYPE Employee_Recode_Type AS TABLE
 DECLARE @Employee_Recode AS Employee_Recode_Type
 INSERT INTO @Employee_Recode
 VALUES(15,'Ling','C1'),(14,'Ling','C1') --可以直接传入多行
+SELECT * FROM Employee_Recode
 ```
 <BR>
 | EmployeeID | Name | Position |
@@ -297,16 +293,16 @@ ON SRC.EmployeeID = TGT.EmployeeID  -- 可以理解为Join
 
 WHEN MATCHED AND TGT.EmployeeID = TGT.EmployeeID  --可以理解为Where
 THEN
-UPDATE SET [Position] = SRC.Position
+UPDATE SET [Position] = SRC.Position --无法添加Where子句
 
 WHEN NOT MATCHED BY TARGET
 THEN 
 INSERT ([EmployeeID],[Name],[Position]) 
 VALUES (SRC.EmployeeID,SRC.Name,SRC.Position)
 ```
-
+#### Store Produce EXEC PART
 ```SQL
-DECLARE @Employee_Recode AS Employee_Recode_Type
+DECLARE @Employee_Recode AS Employee_Recode_Type;
 INSERT INTO @Employee_Recode
 VALUES(15,'Ling','C1'),(14,'Ling','C1') --可以直接传入多行
 
