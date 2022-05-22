@@ -1,17 +1,16 @@
-## Log
+# Overview 
+  没用使用Github Pages,对于阅读用户足够友好,还是做个大纲进行导读
 
-2022-05-21 还是用自己的Surface Book当作服务器用<BR>
-Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作<BR>
-Azure SQL DW 没有资源 
-2022-05-20 白嫖到一个Azure(Mooncake) 环境<BR>
-[Azure Managed Instance](https://docs.azure.cn/zh-cn/azure-sql/managed-instance/) <BR>
-2022-05-19 最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯<BR>
-2022-05-16 Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写
-比较偷懒没有使用Github Pages,直接就手撸 Markdown，大家将就看
-Puny God 目录下主要用于吐槽供应商<BR>
+# Log
+正经人不是很想写日志,或许是吃饱了
+| Date | Memo |
+| ---------- | ---- |
+| 2022-05-21|还是用自己的Surface Book当作服务器用Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作 |
+| 2022-05-20 |Azure SQL DW 没有资源，白嫖到一个Azure(Mooncake) 环境<BR> |
+| 2022-05-19 |最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯|
+|2022-05-16  |Lockdown 情况由于Wahoo骑行台彻底不能用了，总要找些事情做。在这随便写写.Puny God 目录下主要用于吐槽供应商<BR>
 
-
-## Preparations and Necessary Software
+# Preparations and Necessary Software
 没有Cloud 环境，感觉自己下载安装软件的机会越来越少。<BR>
 2022-05-16<BR>
 以下写都写了，万一以后需要安装IaaS环境<BR>

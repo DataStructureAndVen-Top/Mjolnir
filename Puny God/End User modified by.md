@@ -291,7 +291,7 @@ MERGE INTO T_Employee AS TGT --目标表
 USING  @Employee_Recode AS SRC 
 ON SRC.EmployeeID = TGT.EmployeeID  -- 可以理解为Join
 
-WHEN MATCHED AND TGT.EmployeeID = TGT.EmployeeID  --可以理解为Where
+WHEN MATCHED AND TGT.EmployeeID = TGT.EmployeeID  --可以理解为达成条件
 THEN
 UPDATE SET [Position] = SRC.Position --无法添加Where子句
 
