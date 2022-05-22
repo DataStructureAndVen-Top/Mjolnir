@@ -1,10 +1,23 @@
 # Overview 
   没用使用Github Pages,对于阅读用户足够友好,还是做个大纲进行导读
+  环境配置可以参考[这里](https://github.com/DataStructureAndVen-Top/Mjolnir#preparations-and-necessary-software), 都是用本地环境搭建  
+## SQL Part - Microsoft SQL Server 
+  ### 数据类型基础篇
+  日期类型(Date,Datetime)的重要性,没有设计涉及转换函数,只是说这么用[Why use Data Type(Date Type)](Puny%20God/Why%20use%20Data%20Type(Date%20Type).md)
+  数值类型,雪花函数,浮点小数以及货币类型.
+  ### 多版本实现
+  时态表(Temporal Table)
+  参数化(Parameterization),使用存储过程(Store Produce)进行分装
+  表值构造(Table Value Constructor)
+  MERGE 构造方式,发现和Oracle还挺不同的
+  ### 一些半结构类型
+## KQL Azure Data Explore 
 
 # Log
 正经人不是很想写日志,或许是吃饱了
 | YYYYMMDD | NVARCHAR(MAX) |
-| ------------- | ---- |
+| ------------| ---- |
+| 20220522    |虽然MERGE部分调一下,但感觉可以继续挖坑| 
 | 20220521    |还是用自己的Surface Book当作服务器用Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作 |
 | 20220520    |Azure SQL DW 没有资源，白嫖到一个Azure(Mooncake) 环境<BR> |
 | 20220519    |最近手撸 Markdown开始熟练,能够写的话题也开始构思，只是因为写作环境和代码示例环境并不在笔记本电脑上,Fn Ctrl键位不同各种习惯|
