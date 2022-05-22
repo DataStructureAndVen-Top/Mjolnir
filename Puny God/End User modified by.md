@@ -1,6 +1,5 @@
-发现供应商提供的数据库中有很多类似列
-
-<BR>
+### Question
+发现供应商提供的数据库中有很多类似列<BR>
 
 ```SQL
 -- Azure SQL Database 
@@ -64,8 +63,10 @@ Modified_By(何人修改),Modified_Date(何时修改)<BR>
 
  - 业务表需要修改时间(Modified_Date)列用于区分先后修改顺序,以及查询最新更新版本<BR>
  - 或使用[temporal table](https://docs.microsoft.com/en-us/sql/relational-databases/tables/getting-started-with-system-versioned-temporal-tables?view=sql-server-ver15) 实现版本控制<BR>
- - Created_By(何人创建),Create_Date(创建时间) 仔细考虑其实并不需要单个列进行存放，而可以通过最早时间进行查询获得
+ - Create_Date(创建时间) 仔细考虑其实并不需要单个列进行存放，而可以通过最早时间进行查询获得
+ - Created_By(何人创建),Modified_By(何人修改)属于审计类型,应与业务数据分离存放
 
+### Using Temporal Table
 可以使用Temporal Table 方式进行的实现(不是很想写用张基础表Join事项方式)
  -  可以照常使用Update,Delete方式进行更新
  -  数据表默认存放为最新版本(Last Version)
@@ -87,14 +88,20 @@ CREATE TABLE dbo.T_Employee
 WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.EmployeeHistory));
 
 --制造一些数据
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (1,'Isabella','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (2,'Ethan','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (3,'Amy','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (4,'Anthony','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (5,'Taj','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (6,'Hudson','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (7,'Jack','C1');
-INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) VALUES (8,'Piper','C1');
+INSERT INTO [dbo].[T_Employee]([EmployeeID],[Name],[Position]) 
+VALUES (1,'Isabella','C1'),
+(2,'Ethan','C1'),
+(3,'Amy','C1'),
+(4,'Anthony','C1'),
+(5,'Taj','C1'),
+(6,'Hudson','C1'),
+(7,'Jack','C1'),
+(8,'Piper','C1');
+
+
+INSERT INTO Production.UnitMeasure  
+VALUES (N'FT2', N'Square Feet ', '20080923'), (N'Y', N'Yards', '20080923'),
+       (N'Y3', N'Cubic Yards', '20080923');  
 
 WAITFOR DELAY '00:00:02:00';
 
@@ -224,6 +231,85 @@ SELECT * FROM Employee
 
 <BR>可以发现其创建日期(就是第一次更新日期), 完全没有必要去占用一列去存储
 
+### Build Store Produce
+ - DELETE 操作可以单独创建SP_DELETE_Employee<BR>
+ - INSERT与UPDATE 在并发要求不高情况下可以考虑MERGE 编写<BR>
 
-鉴于前端拼接SQL语句的不熟练性,干脆包装成存储过程(Store Procedure)一层
+<BR> 
 
+#### Store Produce DELETE PART(Parameterization) 
+```SQL
+-- DELETE PART SQL 写把变量写好测试一下
+DECLARE @EmployeeIDvar int;  
+SET @EmployeeIDvar = 3
+--SELECT @EmployeeIDvar
+
+DELETE [dbo].[T_Employee]
+WHERE EmployeeID = @EmployeeIDvar
+
+-- DELETE PART Store Produce 只接受一个参数参数就是EmployeeID
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SP_DELETE_Employee]') AND type in (N'P'))
+DROP PROCEDURE [dbo].[SP_DELETE_Employee]
+
+CREATE PROCEDURE dbo.SP_DELETE_Employee   
+    @EmployeeIDvar int 
+AS   
+    SET NOCOUNT ON;
+    DELETE [dbo].[T_Employee]
+WHERE EmployeeID = @EmployeeIDvar
+
+EXECUTE SP_Merge_Employee @EmployeeIDvar = 3
+
+SELECT * FROM Employee
+
+```
+<BR>
+
+#### Store Produce Table Value Constructor PART
+```SQL
+CREATE TYPE Employee_Recode_Type AS TABLE
+(
+    [EmployeeID] int,
+    [Name] VARCHAR(200),
+    [Position] VARCHAR(100)
+)
+DECLARE @Employee_Recode AS Employee_Recode_Type
+INSERT INTO @Employee_Recode
+VALUES(15,'Ling','C1'),(14,'Ling','C1') --可以直接传入多行
+```
+<BR>
+| EmployeeID | Name | Position |
+| ---------- | ---- | -------- |
+| 15         | Ling | C1       |
+| 14         | Ling | C1       |
+
+<BR>
+
+#### Store Produce MERGE PART
+```SQL
+CREATE OR ALTER PROCEDURE dbo.SP_MERGE_Employee
+@Employee_Recode Employee_Recode_Type
+AS
+SET NOCOUNT ON
+MERGE INTO T_Employee AS TGT --目标表
+USING  @Employee_Recode AS SRC 
+ON SRC.EmployeeID = TGT.EmployeeID  -- 可以理解为Join
+
+WHEN MATCHED AND TGT.EmployeeID = TGT.EmployeeID  --可以理解为Where
+THEN
+UPDATE SET [Position] = SRC.Position
+
+WHEN NOT MATCHED BY TARGET
+THEN 
+INSERT ([EmployeeID],[Name],[Position]) 
+VALUES (SRC.EmployeeID,SRC.Name,SRC.Position)
+```
+
+```SQL
+DECLARE @Employee_Recode AS Employee_Recode_Type
+INSERT INTO @Employee_Recode
+VALUES(15,'Ling','C1'),(14,'Ling','C1') --可以直接传入多行
+
+EXEC dbo.SP_MERGE_Employee @Employee_Recode
+
+```
