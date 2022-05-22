@@ -6,11 +6,13 @@
   日期类型(Date,Datetime)的重要性,没有设计涉及转换函数,只是说这么用[Why use Data Type(Date Type)](Puny%20God/Why%20use%20Data%20Type(Date%20Type).md)
   数值类型,雪花函数,浮点小数以及货币类型.
   ### 多版本实现
-  时态表(Temporal Table)
-  参数化(Parameterization),使用存储过程(Store Produce)进行分装
-  表值构造(Table Value Constructor)
-  MERGE 构造方式,发现和Oracle还挺不同的
+  时态表(Temporal Table)<BR>
+  参数化(Parameterization),使用存储过程(Store Produce)进行分装<BR>
+  表值构造(Table Value Constructor)<BR>
+  MERGE 构造方式,发现和Oracle还挺不同的<BR>
   ### 一些半结构类型
+  Working
+
 ## KQL Azure Data Explore 
 
 # Log
