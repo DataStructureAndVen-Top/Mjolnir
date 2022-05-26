@@ -15,6 +15,10 @@
 
 ## KQL Part - Azure Data Explore 
 
+
+## To Do List 
+API , REST API，RESTful API<BR>
+TypeScript 开坑<BR>
 # Log
 正经人不是很想写日志,或许是吃饱了
 | YYYYMMDD | NVARCHAR(MAX) |
