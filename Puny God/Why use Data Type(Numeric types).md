@@ -1,5 +1,5 @@
 ### Question
-生产库里的哪些数据类型...
+生产库里的那些数据类型...
 <BR>
 
 ```SQL
@@ -70,20 +70,20 @@ Working
 
 ### Question
 你会使用SQL Server 什么数据类型存放折扣率 <BR>
-A decimal<BR>
-B float<BR> 
-C bigint<BR>
-D 钝角 <BR>
-E smallmoney<BR>
-F tinyint<BR>
+ - A decimal<BR>
+ - B float<BR>
+ - C bigint<BR>
+ - D 钝角<BR>
+ - E smallmoney<BR>
+ - F tinyint<BR>
 
-D 作为保留选项是一定会存在的...<BR>
+ - D 作为保留选项是一定会存在的...<BR>
 随后首先排除掉供应商同学选的C bigint, 我也不清楚及占用存储空间,又需要二次计算的选项是怎么考量的<BR>
-一般理解思路为折扣是一个0.990000至0.10(通过增加小数位数可以更小但与实际生活状况不符)<BR>
+一般理解思路为折扣是一个0.990000至0.10之间<BR>
 即所谓99折或1折的中文语境表达方式<BR>
 
-A decimal 以及 B float 可以纳入考虑范围<BR>
-B float 是作为一个SQL Server 知识点<BR>
+ - A decimal 以及 B float 可以纳入考虑范围<BR>
+ - B float 是作为一个SQL Server 知识点<BR>
 
 用于表示浮点数值数据的**大致**数值数据类型。 浮点数据为**近似值**；因此，**并非数据类型范围内的所有值都能精确地表示**。
 **Approximate-number** data types for use with floating point numeric data. Floating point data is approximate; therefore, not all values in the data type range can be represented exactly.
