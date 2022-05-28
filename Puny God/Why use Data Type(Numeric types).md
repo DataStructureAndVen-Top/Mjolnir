@@ -85,14 +85,14 @@ F tinyint<BR>
  - A decimal 以及 B float 可以纳入考虑范围<BR>
  - B float 是作为一个SQL Server 知识点<BR>
 
-用于表示浮点数值数据的**大致**数值数据类型。 浮点数据为**近似值**；因此，**并非数据类型范围内的所有值都能精确地表示**。
-**Approximate-number** data types for use with floating point numeric data. Floating point data is approximate; therefore, not all values in the data type range can be represented exactly.
+用于表示浮点数值数据的**大致**数值数据类型。 浮点数据为**近似值**；因此，**并非数据类型范围内的所有值都能精确地表示**。<BR>
+**Approximate-number** data types for use with floating point numeric data. Floating point data is approximate; therefore, not all values in the data type range can be represented exactly.<BR>
 https://docs.microsoft.com/zh-cn/sql/t-sql/data-types/float-and-real-transact-sql?
 view=sql-server-ver16
 <BR>
 
  - E smallmoney 选项较为玩味, 可以两种解释方式
-1. 存放折扣数字. 即作为存放已确定长度decimal
+1. 存放折扣数字. 即作为存放已确定长度decimal,同decimal使用方式
 2. 存放折扣后最终数值.个人推荐这种方式对于业务友好方式,例如一个价格为为85RMB的物品进行75折销售<BR>
     85*0.75 = 63.75<BR>
     一般业务会需要进行抹除角分,即63RMB,那么折扣率仅保留5位小数会存在误差,也无法进行统一处理
