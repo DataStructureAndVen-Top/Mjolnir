@@ -70,12 +70,12 @@ Working
 
 ### Question
 你会使用SQL Server 什么数据类型存放折扣率 <BR>
- - A decimal<BR>
- - B float<BR>
- - C bigint<BR>
- - D 钝角<BR>
- - E smallmoney<BR>
- - F tinyint<BR>
+A decimal<BR>
+B float<BR>
+C bigint<BR>
+D 钝角<BR>
+E smallmoney<BR>
+F tinyint<BR>
 
  - D 作为保留选项是一定会存在的...<BR>
 随后首先排除掉供应商同学选的C bigint, 我也不清楚及占用存储空间,又需要二次计算的选项是怎么考量的<BR>
@@ -91,7 +91,7 @@ https://docs.microsoft.com/zh-cn/sql/t-sql/data-types/float-and-real-transact-sq
 view=sql-server-ver16
 <BR>
 
-E smallmoney 选项较为玩味, 可以两种解释方式
+ - E smallmoney 选项较为玩味, 可以两种解释方式
 1. 存放折扣数字. 即作为存放已确定长度decimal
 2. 存放折扣后最终数值.个人推荐这种方式对于业务友好方式,例如一个价格为为85RMB的物品进行75折销售<BR>
     85*0.75 = 63.75<BR>
@@ -99,7 +99,7 @@ E smallmoney 选项较为玩味, 可以两种解释方式
     63/75 = 0.741176470588235<BR>
     0.74117*85 = 62.99945<BR>
 
-F tinyint 是一个值得玩味的答案,假如写成以下的形式也是一种值得肯定设计方式
+ - F tinyint 是一个值得玩味的答案,假如写成以下的形式也是一种值得肯定设计方式
 <BR>
 
 ```SQL
