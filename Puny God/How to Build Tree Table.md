@@ -179,3 +179,28 @@ SELECT * FROM CET_Manager_4
  -  Semi-Structured
     -  [XML](https://docs.microsoft.com/en-us/sql/relational-databases/xml/xml-data-sql-server?view=sql-server-ver15)
     -  [JSON](https://docs.microsoft.com/zh-cn/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver15)
+
+
+1. 邮件推送功能不完善，没有定时定时邮件推送，无法按需快速定制邮件提醒	
+   门户默认提供，发送报表依赖于数仓数据提供
+2. 无法导出PDF，希望可以实现导出所展示的报表
+   门户默认提供
+3. 无法手动按需刷新 - 希望支持用户自行刷新
+   页面需要插件辅助，数据实时性需要更改数据链路
+4. 交互界面不够友好，无法快速定制
+   体验问题具体分析
+5. 动态权限控制，如动态跟随org chart进行控制
+   需要对应权限表
+6. Report Server无法提供API接口，只能通过Iframe整体嵌入其他Application
+   我没理解的问题，需要实现何种功能
+7. 没有报表搜索功能，缺少报表tag(权限控制)
+   需要对应标签表
+8. 无法定义报表self-explanation功能，用户体验不够好
+   体验问题具体分析
+9.  缺少有效的报表异常数据或优化建议反馈途径
+   这是流程问题吧
+10. 报表统计数据不够精细，可用的维度不够
+   数仓性质问题
+11. 线上数据录入，提供数据录入的途径（权限控制）
+   MDM系统问题
+
