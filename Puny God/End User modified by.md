@@ -242,7 +242,7 @@ SET @EmployeeIDvar = 3
 DELETE [dbo].[T_Employee]
 WHERE EmployeeID = @EmployeeIDvar
 
--- DELETE PART Store Produce 只接受一个参数参数就是EmployeeID
+-- DELETE PART Store Produce 只接受一个参数,参数就是EmployeeID
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SP_DELETE_Employee]') AND type in (N'P'))
 DROP PROCEDURE [dbo].[SP_DELETE_Employee]
 

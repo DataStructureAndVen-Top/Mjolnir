@@ -1,5 +1,5 @@
 # Overview 
-  没用使用Github Pages,对于阅读用户足够友好,还是做个大纲进行导读
+  没用使用Github Pages,为了对阅读用户体现足够友好度,做个大纲进行导读
   环境配置可以参考[这里](https://github.com/DataStructureAndVen-Top/Mjolnir#preparations-and-necessary-software), 都是用本地环境搭建  
 ## SQL Part - Microsoft SQL Server 
   ### 数据类型基础篇
@@ -23,6 +23,7 @@ TypeScript 开坑<BR>
 正经人不是很想写日志,或许是吃饱了
 | YYYYMMDD | NVARCHAR(MAX) |
 | ------------| ---- |
+| 20220602    |最近没怎么更新,主要上海解封了,所以都在出去浪.感觉很快被关回去,这里又可以好好工作了| 
 | 20220522    |虽然MERGE部分调一下,但感觉可以继续挖坑| 
 | 20220521    |还是用自己的Surface Book当作服务器用Azure SQL Database/Azure SQL Managed Instance 无法进行暂停(Pasue)或Stop(停止)操作 |
 | 20220520    |Azure SQL DW 没有资源，白嫖到一个Azure(Mooncake) 环境<BR> |

@@ -8,8 +8,8 @@ SELECT DATA_TYPE
 FROM INFORMATION_SCHEMA.COLUMNS
 GROUP BY DATA_TYPE
 ```
+<BR>
 
-<BR>  
 | DATA_TYPE |
 | --------- |
 | bigint    |
@@ -30,6 +30,7 @@ GROUP BY DATA_TYPE
 | tinyint   |
 | varbinary |
 | varchar   |
+
 <BR> 
 
 进一步查询,可以发现大多的bigint类型作为ID进行使用<BR>
