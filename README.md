@@ -1,9 +1,9 @@
 # Overview 
-  没用使用Github Pages,为了对阅读用户体现足够友好度,做个大纲进行导读
+  没有使用Github Pages,为了对阅读用户体现足够友好度,做个大纲进行导读
   环境配置可以参考[这里](https://github.com/DataStructureAndVen-Top/Mjolnir#preparations-and-necessary-software), 都是用本地环境搭建  
 ## SQL Part - Microsoft SQL Server 
   ### 数据类型基础篇
-  [日期类型(Date,Datetime)的重要性,没有设计涉及转换函数,只是说这么用](Puny%20God/Why%20use%20Data%20Type(Date%20Type).md)<BR>
+  [日期类型(Date,Datetime)的重要性,没有设计涉及转换函数,只是说怎么用](Puny%20God/Why%20use%20Data%20Type(Date%20Type).md)<BR>
   数值类型,雪花函数,浮点小数以及货币类型.<BR> Working
   ### 多版本实现
   [时态表(Temporal Table)](https://github.com/DataStructureAndVen-Top/Mjolnir/blob/main/Puny%20God/End%20User%20modified%20by.md#using-temporal-table)<BR>
@@ -18,7 +18,7 @@
 
 ## To Do List 
 API , REST API，RESTful API<BR>
-TypeScript 开坑<BR>
+关于货币类型存放
 # Log
 正经人不是很想写日志,或许是吃饱了
 | YYYYMMDD | NVARCHAR(MAX) |
