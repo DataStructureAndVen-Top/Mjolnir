@@ -30,3 +30,7 @@ https://hudi.apache.org/
 Apache Projects List
 https://projects.apache.org/projects.html?category
 
+大家可以用来抄作业的架构
+
+https://docs.microsoft.com/zh-cn/azure/architecture/data-guide/
+
