@@ -1,7 +1,7 @@
 发现还是挖坑比较开心,主要是挖了的坑不用填这样没有心理负担<BR>
 看空闲状况,写到哪里算哪里<BR>
 
-Kusto Query Language (KQL)目前也就官方资料比较齐全, 网上大多数文档都是Copy-Paste。所以原创还是发到Github去吧<BR>'
+Kusto Query Language (KQL)目前也就官方资料比较齐全, 网上大多数文档都是Copy-Paste。所以原创还是发到Github去吧<BR>
 
 
 KSQL创建的目的,官方也有阐述,为了[探索数据、发现模式、识别异常和离群值、创建统计建模](https://docs.microsoft.com/zh-cn/azure/data-explorer/kusto/query/),不是说其他语言不能干,而在很多语言设立之初并没有考虑,或同通过增补集合方式提供比较别扭的功能(SQL),或数据量增加够性能无妨进行满足(Python)<BR>
