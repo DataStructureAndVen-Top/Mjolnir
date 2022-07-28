@@ -34,3 +34,34 @@ https://projects.apache.org/projects.html?category
 
 https://docs.microsoft.com/zh-cn/azure/architecture/data-guide/
 
+
+
+一些英语也很容易错译部分
+Azure Databricks 中
+Datasets
+https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/datasets
+DataFrames
+https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/dataframes
+
+https://docs.databricks.com/spark/latest/dataframes-datasets/index.html
+
+
+Power BI Datasets
+https://docs.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand
+Paginated Report in Power BI Service
+https://docs.microsoft.com/en-us/power-bi/paginated-reports/paginated-reports-create-embedded-dataset
+
+
+Pandas DataFrame
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html
+databricks DataFrames
+https://databricks.com/glossary/what-are-dataframes
+
+Large datasets in Power BI Premium
+https://docs.microsoft.com/en-us/power-bi/enterprise/service-premium-large-models
+
+Datasets in the Power BI service
+https://docs.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand
+
+Premium capacity （Power BI Premium, Premium Per User, and Power BI Embedded）
+By default, read-only connectivity using the endpoint is enabled for the Datasets workload in a capacity

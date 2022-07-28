@@ -15,12 +15,12 @@ C 使用[Change Data Capture](https://docs.microsoft.com/en-us/sql/relational-da
 D 钝角  <BR>
 E 使用[变动追踪](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-tracking-sql-server?view=sql-server-ver16)技术
 
-
+下面为解析部分
 A 会增加更多存储以及版本一致化问题,而且编写逻辑并不简便
 
 之后的几种方案,都是数据产生过程进行标注
 
-B 需要独立逻辑进行该功能模块开发,无法预测BULK INSERT[FIRE_TRIGGERS](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver16#fire_triggers)所产生后果
+B 需要独立逻辑进行该功能模块开发,无法预测使用BULK INSERT造成[FIRE_TRIGGERS](https://docs.microsoft.com/zh-cn/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver16#fire_triggers)所产生后果
 
 C CDC 并不是为了该需求设计,CDC更多运作与数据分发环节,而非数据变更环节
 
